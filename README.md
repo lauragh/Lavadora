@@ -1,1 +1,1 @@
-# prueba
+# Interfaz de lavadora
