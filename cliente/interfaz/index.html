@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+ <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://kit.fontawesome.com/3090d10af1.js" crossorigin="anonymous"></script>
+    <script src="../electro.js"></script>
+    <script src="main.js"></script>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  
+    <title>Menu - Lavadora</title>
+  </head>
+ 
+ 
+
+  <body class="programas">
+
+    <section id="titulo">
+      <div><h1 id = "horaReloj"> a</h1></div>
+      <h2 id = "fechaReloj"> b</h2>
+      <a onclick="cambiarPag(1);"><img src="img/icono.png" alt="Icono lavadora" width="100" height="100"></a>
+    </section> 
+
+    <div id="barraIconos2">
+        <i onclick="microAbierto();" style="position:relative; margin-right: 0.5em;" class="fas fa-microphone"></i>
+        <i onclick="microAbierto();" id="tachado" style="position: absolute;" class="fas fa-slash"></i>
+        <i class="fas fa-wifi"></i>
+        <i id="ayuda" class="far fa-question-circle"></i>
+        <div class="dropdown">
+          
+          <i data-toggle="dropdown" class="fas fa-globe"></i>
+          <div class="dropdown-menu">
+          <ul>
+              <li onclick="idioma('ES');">Español</li>
+              <li onclick="idioma('EN');">English</li>
+              <li onclick="idioma('CN');">中文</li>
+              <li onclick="idioma('JP');">日本語</li>
+          </ul>
+          </div>
+          <p id="idiomaLabel">ES</p>
+        </div>
+        <i onclick ="cambiarPag(0);" class="fas fa-power-off"></i>
+    </div>
+ 
+    <nav id="navegacion" class="naveg">	
+     <div id="flechas">
+      <i id="flecha1" style="visibility: visible;" class="fas fa-caret-right"></i>
+      <i id="flecha2" style="visibility: hidden;" class="fas fa-caret-right"></i>
+      <i id="flecha3" style="visibility: hidden;" class="fas fa-caret-right"></i>
+      <i id="flecha4" style="visibility: hidden;" class="fas fa-caret-right"></i>
+      </div>
+
+      <ul 
+      id="popover1"
+      data-toggle="popover"
+      data-placement="right"
+      data-html="true" 
+      data-content="1.Elige el programa deseado <br>
+      2.Programa el lavado para más tarde <br>
+      3.Selecciona las características del programa:<br>
+      <i class='fas fa-thermometer-quarter iconoAyuda'></i> Temperatura,
+      <i class='fas fa-stopwatch iconoAyuda'></i> Tiempo, <br>
+      <i class='fab fa-500px iconoAyuda'></i>centrifugado,
+      <i class='fas fa-weight-hanging iconoAyuda'></i>Peso máximo <br>
+      4.Comienza el lavado"
+      data-trigger="manual">
+
+      <li id="m1" class="fasemenu ahora2" onclick="cambiarPag(1);"><p>1.Configuración</p><p id="nombreLabel"></p></li>
+      <li id="m4" class="fasemenu"  onclick="cambiarPag(4);" ><p>2.Programar</p><p id ="horaProgramada">Sin programar</p></li>
+      <li id="m2" class="fasemenu" onclick="cambiarPag(2);">
+      <ul>
+        <li >3.Detalles</li>
+        <li class="detalles"><i class="fas fa-thermometer-quarter"></i><p id="temperaturaLavado"></p></li>	
+        <li class="detalles"><i class="fas fa-stopwatch"></i><p id="tiempoLavado"></p></li>
+        <li class="detalles"><i class="fab fa-500px"></i><p id="revolucionesCentrifugado"></p></li>	
+        <li class="detalles"><i class="fas fa-weight-hanging"></i><p id="peso"></p></li>
+      </ul>
+      </li>
+      
+      <li id="m3" onclick="cambiarPag(3);"><p>Play</p></li>
+    </ul>
+      <div
+      id="popover2"
+      data-toggle="popover"
+      data-placement="right"
+      data-html="true" 
+      data-content="<i class='fas fa-thermometer-quarter iconoAyuda'></i> Temperatura,<br>
+      <i class='fas fa-stopwatch iconoAyuda'></i> Tiempo, <br>
+      <i class='fab fa-500px iconoAyuda'></i>centrifugado, <br>
+      <i class='fas fa-weight-hanging iconoAyuda'></i>Peso máximo <br>"
+      data-trigger="manual"> 
+      </div>
+    </nav>
+
+    <div class="estandar2" id="procesoGlobal"  style="visibility: hidden;">
+      <div class="proceso">
+          <div><i id ="cLavado" class="fas fa-circle"></i></div>
+          <div><i class="fas fa-tshirt"></i></div>
+          <p>Lavado</p>
+      </div>
+      <div class="proceso">
+          <div><i id ="cCentrifugado" class="fas fa-circle"></i></div>
+          <div><i class="fab fa-500px"></i></div>
+          <p>Centrifugado</p>
+          <p style="font-size: 2em;">
+            <span id="horas">H</span>
+            <span id="estadoTiempo">:</span>
+            <span id="minutos">M</span>
+          </p>
+      </div>
+      <div class="proceso">
+          <div><i id ="cSecado" class="fas fa-circle"></i></div>
+          <div><i class="fas fa-sun"></i></div>
+          <p>Secado</p>
+      </div>
+    </div>
+
+
+    <div id="opcionesPrograma" class="estandar">
+      <button onclick="obtenerPrograma(1);"><i class="fas fa-tshirt"></i><br>Sintético</button>
+      <button onclick="obtenerPrograma(2);"><i class="fas fa-feather-alt"></i><br>Delicado</button>
+      <button onclick="obtenerPrograma(3);"><i class="fas fa-volleyball-ball"></i><br>Lana</button>
+      <button onclick="obtenerPrograma(4);"><i class="fab fa-pagelines"></i><br>Eco</button>
+      <button onclick="obtenerPrograma(5);"><i class="fab fa-cotton-bureau"></i><br>Algodón</button>
+      <button onclick="obtenerPrograma(7);"><i class="fas fa-tint"></i><br>Aclarado</button>
+      <button onclick="obtenerPrograma(6);"><i class="fab fa-500px"></i><br>Centrifugado</button>
+      
+    </div>
+
+    <!-- Hay que modificar las características -->
+    <div id="opcionesCaracteristicas" class="estandar2" style="visibility: hidden;">
+        <button onclick="mensaje(1);"><i class="fas fa-thermometer-quarter"></i><br><span id="tempLabel"></span></button>
+        <button  onclick="mensaje(2);"><i class="fas fa-stopwatch"></i><br><span id="tiempoLavadoLabel"></span></button>
+        <button  onclick="mensaje(3);"><i class="fab fa-500px"></i><br><span id="centriLabel"></span></button>
+        <button  style="color:gray" ><i style="color:gray"  class="fas fa-weight-hanging"></i><br><span id="pesoLabel"></span></button>
+    </div>
+
+    <p class="estandar2" style="visibility: hidden" id="mensajeError"></p>
+    	
+    <div id="programarlavado" class="estandar" style="visibility: hidden;">	
+       <input type="time" name="hora" id="horita">	
+        <button onclick="programarHora();">Confirmar</button>
+        <button onclick="cancelarHora();">Cancelar</button>
+    </div>	
+
+    <div id="abajo" class="naveg" style="visibility: hidden;">	
+      <div>	
+        <ul>	
+            <li onclick="mensaje7();"><i class="fas fa-chart-line iconos"></i><p>Consumo</p></li>
+            <li onclick="cancelar();"><i class="fas fa-times"></i><p>Cancelar</p></li>
+        </ul>	
+      </div>
+    </div>
+
+    
+
+    <!-- Optional JavaScript -->
+    <script>
+      cargarInfo();
+      mostrarHora();
+	    mostrarFecha();
+      cambiarPag(0);
+  
+    </script>
+    <!-- SCRIPTS PARA LOS POPOVER -->
+    <script>
+      // mostrar los popover cuando se pulse el botón ayuda
+        $('#ayuda').on('click', function() {
+          if(document.getElementById("titulo").style.visibility == "hidden" && document.getElementById("opcionesCaracteristicas").style.visibility == "hidden"){
+            $('[id="popover1"]').popover('toggle');
+          }
+          else if(document.getElementById("titulo").style.visibility == "hidden" && document.getElementById("opcionesCaracteristicas").style.visibility == "visible"){
+            $('[id="popover2"]').popover('toggle');
+
+          }
+        });
+        
+        // Esconder los elementos si toco en cualquier parte
+        $('html').on('mouseup', function(e) {
+            if(typeof $(e.target).data('toggle') === "undefined" 
+                && $(e.target).attr('id') != 'toggle') {
+                $('[data-toggle="popover"]').popover('hide');
+            }
+        });
+      
+      // Inicializar popovers en todo el documento
+      /*
+      $(document).ready(function(){
+          $('[data-toggle="popover"]').popover();
+      });
+      */
+    </script>
+
+  
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
+  </body>
+</html>
