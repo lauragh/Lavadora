@@ -1,4 +1,11 @@
 # Interfaz de lavadora para la asignatura accesibilidad y usabilidad
+
+Imagenes del proyecto:
+<br>
+
+
+
+
 El servidor está implementado con NodeJS.
 
 * Instalar NodeJS en el equipo desde https://nodejs.org/
