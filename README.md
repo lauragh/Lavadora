@@ -2,7 +2,11 @@
 
 Imagenes del proyecto:
 <br>
-
+<img src="imagenes/index.PNG" />
+<img src="imagenes/home.PNG" />
+<img src="imagenes/elegir hora.PNG" />
+<img src="imagenes/instrucciones.PNG" />
+<img src="imagenes/proceso.PNG" />
 
 
 
